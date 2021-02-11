@@ -5,3 +5,6 @@
 
 #Linear regression is one of the most basic forms of machine learning
 
+import matplotlib as plt
+
+#We'll be using linear regression to make a line of best fit and then find patterns in the data to predict future outcomes
