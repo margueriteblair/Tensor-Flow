@@ -76,3 +76,18 @@ print(feature_columns)
 #ex: if we have 10 epochs, then our model will see the same dataset 10 times
 #because we need to feed our data in batches and multiple times, we need to create something called an input function
 #the input function will define how our dataset will be converted into batches every epoch
+#the tf model that we are going to use requires that the data we pass it comes in as a tf.data.Dataset object
+#this means that we must make an input funtion that can convert our pandas df into an object of type tf.data.Dataset
+
+#this input function will dictate how we're breaking our data into epochs and batches to feed our data to the model
+def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):
+    def input_function():
+        ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df)) #this will create a tf.data.Dataset object with data
+        if shuffle:
+            ds = ds.shuffle(1000) #you randomize the order of data
+        ds = ds.batch(batch_size).repeat(num_epochs)
+        return ds #this will return a batch of the dataset
+    return input_function #return a function object for use
+
+train_input_fn = make_input_fn(dftrain, y_train)
+eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
