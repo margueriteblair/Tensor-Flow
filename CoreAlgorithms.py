@@ -67,3 +67,12 @@ for feature_name in NUMERIC_COLUMNS:
     feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))
 
 print(feature_columns)
+
+#we train the model by feeding it information
+#for this specific model data is going to be streamed into the model in small batches of 32; batches are typically in multiples of 32
+#we won't be feeding our entire dataset to our model all at once, but in small batches of entries
+#we will feed these batches to our model multiple times according to the number of epochs
+#an epoch is simply one stream of our entire dataset, the number of epochs we define is the amount of times our model will see the entire dataset
+#ex: if we have 10 epochs, then our model will see the same dataset 10 times
+#because we need to feed our data in batches and multiple times, we need to create something called an input function
+#the input function will define how our dataset will be converted into batches every epoch
