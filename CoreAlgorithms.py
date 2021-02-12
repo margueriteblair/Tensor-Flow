@@ -5,6 +5,16 @@
 
 #Linear regression is one of the most basic forms of machine learning
 
+from __future__ import absolute_import, division, print_function, unicode_literals
 import matplotlib as plt
+import numpy as np
+import sklearn
 
 #We'll be using linear regression to make a line of best fit and then find patterns in the data to predict future outcomes
+#If we create linear correspondence, we can draw a line of best fit to classify the data
+#linear regression is used when we have data points that correleate linearly
+#but we can also have multidimensional values
+#the line of best fit will have a y=mx+b type fit
+
+ 
+
