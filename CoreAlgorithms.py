@@ -99,4 +99,11 @@ linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns)
 linear_est.train(train_input_fn) #training
 result = linear_est.evaluate(eval_input_fn) #get the model metrics by testing on testing data
 clear_output() #clears console output
-print("Accuracy" + result['accuracy'])
+print("Accuracy", result['accuracy'])
+
+#tensor flow models are meant to be for large data
+result = list(linear_est.predict(eval_input_fn)) #we need to pass in an input function to make a prediction
+#linear_est is actually the name of our model
+print(dfeval.loc[0])
+print(result[0]['probabilities']) #we get a dictionary from this that represents our predictions
+#this shows the probability of survival
