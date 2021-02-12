@@ -105,5 +105,6 @@ print("Accuracy", result['accuracy'])
 result = list(linear_est.predict(eval_input_fn)) #we need to pass in an input function to make a prediction
 #linear_est is actually the name of our model
 print(dfeval.loc[0])
+print(y_eval.loc[0])
 print(result[0]['probabilities']) #we get a dictionary from this that represents our predictions
 #this shows the probability of survival
