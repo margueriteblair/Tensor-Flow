@@ -12,8 +12,8 @@ import pandas as pd #allows for representing data
 import numpy as np
 import sklearn
 from six.moves import urllib
-import TensorFlow.compat.v2.feature_column as fc
-import TensorFlow as tf
+# import TensorFlow.compat.v2.feature_column as fc
+import tensorflow as tf
 # import tensorflow.compat.v2.feature_column as fc
 # import tensorflow as tf
 #We'll be using linear regression to make a line of best fit and then find patterns in the data to predict future outcomes
@@ -26,8 +26,10 @@ dftrain = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/train.
 dfeval = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/eval.csv') #this is the testing data
 y_train = dftrain.pop('survived') 
 y_eval = dfeval.pop('survived')
+
 #pd.read_csv() method will return to us a new pandas dataframe object, think of a df similarly to a table
 #we've decided to pop off the survived variable and store it in a new var
-
+#label is our output information
+#within the dataset, 0 stands for didn't survive, 1 survived
  
 
