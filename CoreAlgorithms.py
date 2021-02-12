@@ -36,8 +36,12 @@ print(y_train.head())
  
 #now we'll be creating visuals
 dftrain.age.hist(bins=20)
-dftrain.sex.value_counts().plot(kind='barh')
+plt.show()
+dftrain.sex.value_counts().plot(kind='barh') #shows sex breakdown 
+plt.show()
 dftrain['class'].value_counts().plot(kind='barh')
+plt.show()
 pd.concat([dftrain, y_train], axis=1).groupby('sex').survived.mean().plot(kind='bar').set_xlabel("% survived")
+plt.show()
 
 
