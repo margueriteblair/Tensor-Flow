@@ -48,16 +48,22 @@ plt.show()
 print(dfeval.shape)
 print(dftrain.shape)
 
+#categorical data is something that's not numeric, that groups entries into a category
+#we essentially need to encode categorical data into integer data, like male = 1, female = 0
+#the model that we're making will need to just know that male and female are different
 CATEGORICAL_COLUMNS = ['sex', 'n_siblings_spouses', 'parch', 'class', 'deck', 'embark_town', 'alone']
+#numerical data is already in the format we want it in
 NUMERIC_COLUMNS = ['age', 'fare']
 
 feature_columns = [] #features of the opposite of labels; features are our input variables
+#feature columns are actually what we're going to feed to our linear regression model to make predictions
 
 for feature_name in CATEGORICAL_COLUMNS:
     vocabulary = dftrain[feature_name].unique() #this gets a list of all unique values from a given feature column
     feature_columns.append(tf.feature_column.categorical_column_with_vocabulary_list(feature_name, vocabulary))
-
+    #this creates a column in the form of a numpy array
 for feature_name in NUMERIC_COLUMNS:
+    #with a numerical column there could be an infinite amount of values
     feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))
 
 print(feature_columns)
