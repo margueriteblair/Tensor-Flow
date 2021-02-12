@@ -26,9 +26,18 @@ y_train = dftrain.pop('survived')
 y_eval = dfeval.pop('survived')
 print(dftrain.head()) #it works!
 print(dftrain.loc[0], y_train.loc[0])
+print(dftrain.describe()) #this will give us high level information about the df
+print(dftrain.shape)
+print(y_train.head())
 #pd.read_csv() method will return to us a new pandas dataframe object, think of a df similarly to a table
 #we've decided to pop off the survived variable and store it in a new var
 #label is our output information
 #within the dataset, 0 stands for didn't survive, 1 survived
  
+#now we'll be creating visuals
+dftrain.age.hist(bins=20)
+dftrain.sex.value_counts().plot(kind='barh')
+dftrain['class'].value_counts().plot(kind='barh')
+pd.concat([dftrain, y_train], axis=1).groupby('sex').survived.mean().plot(kind='bar').set_xlabel("% survived")
+
 
