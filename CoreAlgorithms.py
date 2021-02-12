@@ -6,10 +6,13 @@
 #Linear regression is one of the most basic forms of machine learning
 
 from __future__ import absolute_import, division, print_function, unicode_literals
-import matplotlib as plt
+import matplotlib.pyplot as plt
+from IPython.display import clear_output
+import pandas as pd
 import numpy as np
 import sklearn
-
+import TensorFlow.compat.v2.feature_column as fc
+import tensorflow as tf
 #We'll be using linear regression to make a line of best fit and then find patterns in the data to predict future outcomes
 #If we create linear correspondence, we can draw a line of best fit to classify the data
 #linear regression is used when we have data points that correleate linearly
