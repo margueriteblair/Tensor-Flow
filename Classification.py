@@ -34,4 +34,11 @@ def input_fn(features, labels, training=True, batch_size=256):
     
     return dataset.batch(batch_size)
 
+#feature columns
+my_feature_columns = []
+for key in train.keys():
+    my_feature_columns.append(tf.feature_column.numeric_column(key=key))
+
+print(my_feature_columns)
+
 
