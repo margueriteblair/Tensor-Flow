@@ -24,6 +24,14 @@ print(train.head())
 train_y = train.pop('Species')
 test_y = test.pop('Species')
 train.head()
+print(train.shape)
 
+def input_fn(features, labels, training=True, batch_size=256):
+    #converts the inputs to a Dataset
+    dataset = tf.data.Dataset.from_tensor_slices((dict(features), labels))
+    if training:
+        dataset = dataset.shuffle(1000).repeat()
+    
+    return dataset.batch(batch_size)
 
 
