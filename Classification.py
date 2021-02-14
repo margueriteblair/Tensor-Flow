@@ -16,7 +16,14 @@ test_path = tf.keras.utils.get_file(
 )
 
 #we're loading training and testing into CSV column names
+#we don't need to convert categorical data into numerical data
 train = pd.read_csv(train_path, names=CSV_COLUMN_NAMES, header=0)
 test = pd.read_csv(test_path, names=CSV_COLUMN_NAMES, header=0)
+print(train.head())
+
+train_y = train.pop('Species')
+test_y = test.pop('Species')
+train.head()
+
 
 
