@@ -52,4 +52,11 @@ classifier = tf.estimator.DNNClassifier(
     n_classes=3
 )
 
+classifier.train(
+    #a lambda is an unnamed one liner function
+    #in this instance, we need a function that returns a function
+    input_fn=lambda: input_fn(train, train_y, training=True),
+    #steps is similar to an epoch, we're just saying we'll go through the dataset until we go through 5000
+    steps=5000)
+
 
