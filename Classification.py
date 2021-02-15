@@ -58,5 +58,11 @@ classifier.train(
     input_fn=lambda: input_fn(train, train_y, training=True),
     #steps is similar to an epoch, we're just saying we'll go through the dataset until we go through 5000
     steps=5000)
+    #the lower the loss number the better
+    #.39 isn't great :(
+
+eval_result = classifier.evaluate(input_fn=lambda: input_fn(test, test_y, training=False))
+
+print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
 
