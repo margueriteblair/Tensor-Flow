@@ -66,3 +66,10 @@ eval_result = classifier.evaluate(input_fn=lambda: input_fn(test, test_y, traini
 print('\nTest set accuracy: {accuracy:0.3f}\n'.format(**eval_result))
 
 
+def input_fn(features, batch_size=246):
+    #convert the inputs to a dataset without labels
+    return tf.data.Dataset.from_tensor_slices(dict(features)).batch(batch_size)
+
+features=['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth']
+predict = {}
+
