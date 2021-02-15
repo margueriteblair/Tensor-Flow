@@ -41,4 +41,15 @@ for key in train.keys():
 
 print(my_feature_columns)
 
+#now we're ready to choose a model; there's lots of preexisting models for classification, such a s DNNClassifier, LinearClassifier, etc
+#we're going to choose the DNNClassifier b/c there might not be a linear correlation in our dataset
+#estimator stores a bunch of premade models
+classifier = tf.estimator.DNNClassifier(
+    feature_columns=my_feature_columns,
+    #we're making two hidden layers of 30 nodes and 10 nodes respectively, this is arbitrary
+    hidden_units=[30,10],
+    #the model must choose between 3 classes, we know there are 3 classes for the flowers
+    n_classes=3
+)
+
 
